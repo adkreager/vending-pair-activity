@@ -10,6 +10,7 @@ public class VendingMachine {
     public double profit = 0.0;
     private double depositedFunds = 0.0;
 
+
     public ArrayList<com.galvanize.Item> getItems() {
 
         return this.items;
@@ -38,5 +39,43 @@ public class VendingMachine {
             }
         }
         return "Try Again!";
+    }
+
+    public String getItem(Item item) {
+        if (this.items.contains(item)) {
+            return "vending item";
+        } else {
+            return "please select another item";
+        }
+    }
+
+    public String buyItem(Item item) {
+        double price = item.getPrice();
+        if (this.depositedFunds < price) {
+            return "Please add more money";
+        } else {
+            this.depositedFunds -= price;
+            this.profit += price;
+            return "vending item";
+        }
+    }
+
+    public double returnChange() {
+        double change = this.depositedFunds;
+        this.depositedFunds = 0;
+        return change;
+    }
+
+    public double cancelOrder() {
+        return returnChange();
+    }
+
+    public String checkChange(Item item) {
+        double price = item.getPrice();
+        if (this.profit >= price) {
+            return "enough change";
+        } else {
+            return "not enough change";
+        }
     }
 }

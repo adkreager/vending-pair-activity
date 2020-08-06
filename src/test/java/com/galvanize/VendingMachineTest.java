@@ -22,7 +22,7 @@ public class VendingMachineTest {
         VendingMachine vend = new VendingMachine();
         ArrayList<Item> list = new ArrayList<Item>();
 
-        Item item1 = new Item();
+        Item item1 = new Item("item");
         list.add(item1);
         vend.addItem(item1);
 
@@ -64,5 +64,65 @@ public class VendingMachineTest {
 
     }
 
+    @Test
+    public void checkItemIsUnavailable() {
+        VendingMachine vend = new VendingMachine();
+        Item item1 = new Item("oreos");
+        Item item2 = new Item("Coca cola");
 
+        vend.addItem(item1);
+
+        assertEquals("vending item", vend.getItem(item1));
+        assertEquals("please select another item", vend.getItem(item2));
+    }
+
+    @Test
+    public void checkIfHaveEnoughMoney() {
+        VendingMachine vend = new VendingMachine();
+
+        Item item1 = new Item("oreos", 2.00);
+        assertEquals("Please add more money", vend.buyItem(item1));
+
+        vend.depositMoney(0.50);
+        assertEquals("Please add more money", vend.buyItem(item1));
+
+        vend.depositMoney(1.50);
+        assertEquals("vending item", vend.buyItem(item1));
+    }
+
+    @Test
+    public void custReceiveChange() {
+        VendingMachine vend = new VendingMachine();
+        Item item1 = new Item("oreos", 2.00);
+        assertEquals("Please add more money", vend.buyItem(item1));
+        vend.depositMoney(0.50);
+        assertEquals("Please add more money", vend.buyItem(item1));
+        vend.depositMoney(2.00);
+        assertEquals("vending item", vend.buyItem(item1));
+
+        assertEquals(0.50, vend.returnChange());
+        assertEquals(0.0, vend.getDepositedFunds());
+    }
+
+    @Test
+    public void getRefundOnCancelledOrder() {
+        VendingMachine vend = new VendingMachine();
+        vend.depositMoney(0.50);
+        vend.depositMoney(2.00);
+
+        assertEquals(2.50, vend.cancelOrder());
+    }
+
+    @Test
+    public void checkIfVendingMachineCanMakeChange() {
+        VendingMachine vend = new VendingMachine();
+        vend.depositMoney(3.00);
+        Item item1 = new Item("cookies", 1.00);
+        Item item2 = new Item("gum", 3.00);
+
+        vend.buyItem(item1);
+
+        assertEquals("enough change", vend.checkChange(item1));
+        assertEquals("not enough change", vend.checkChange(item2));
+    }
 }

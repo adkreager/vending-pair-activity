@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.galvanize.VendingMachineTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-06T19:24:34" hostname="DESKTOP-GCQ6JIV" time="0.009">
+<testsuite name="com.galvanize.VendingMachineTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2020-08-06T19:54:16" hostname="LAPTOP-I2LODNRV" time="0.023">
   <properties/>
-  <testcase name="errorCode()" classname="com.galvanize.VendingMachineTest" time="0.009"/>
+  <testcase name="seeTotalSalesFromVendingMachine()" classname="com.galvanize.VendingMachineTest" time="0.01"/>
+  <testcase name="checkItemIsUnavailable()" classname="com.galvanize.VendingMachineTest" time="0.001"/>
+  <testcase name="checkIfHaveEnoughMoney()" classname="com.galvanize.VendingMachineTest" time="0.0"/>
+  <testcase name="canSeeWhatIsInVendingMachine()" classname="com.galvanize.VendingMachineTest" time="0.001"/>
+  <testcase name="errorCode()" classname="com.galvanize.VendingMachineTest" time="0.001"/>
+  <testcase name="howMuchMoneyHaveIDeposited()" classname="com.galvanize.VendingMachineTest" time="0.0"/>
+  <testcase name="addItemsToVendingMachine()" classname="com.galvanize.VendingMachineTest" time="0.0"/>
+  <testcase name="addMoreMoney()" classname="com.galvanize.VendingMachineTest" time="0.001"/>
+  <testcase name="custReceiveChange()" classname="com.galvanize.VendingMachineTest" time="0.0"/>
+  <testcase name="getRefundOnCancelledOrder()" classname="com.galvanize.VendingMachineTest" time="0.001"/>
+  <testcase name="checkIfVendingMachineCanMakeChange()" classname="com.galvanize.VendingMachineTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
